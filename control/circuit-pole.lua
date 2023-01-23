@@ -12,9 +12,11 @@ function circuitPole_build_electric_pole(entity)
 	-- diconnect all circuit poles and measure distance to poles
 	local d={}
 	for k,e in pairs(entity.neighbours.copper) do
-		entity.disconnect_neighbour(e)
-		local distance = math2d.position.distance(entity.position, e.position)
-		table.insert(d, { distance= distance, entity = e} )
+		if e.type == "electric-pole" and e.valid then
+			entity.disconnect_neighbour(e)
+			local distance = math2d.position.distance(entity.position, e.position)
+			table.insert(d, { distance= distance, entity = e} )
+		end
 	end
 	
 	table.sort(d, function(x, y)
