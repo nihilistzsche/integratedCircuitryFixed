@@ -134,6 +134,7 @@ entityMethods.build = function(entity, player)
 	Surface.placeTiles(data.chunkPos, data.size)
 	local surface = Surface.get()
 	local chunkMiddle = Surface.chunkMiddle(data.chunkPos)
+	surface.set_chunk_generated_status(data.chunkPos, defines.chunk_generated_status.entities)
 	for y=-3,3,2 do for x=-3,3,2 do
 		if math.abs(x)==3 or math.abs(y)==3 then
 			local p = entity.surface.find_entity("compact-combinator-io",{x=position.x+x*0.25 , y=position.y+y*0.25})
@@ -364,6 +365,7 @@ private.pasteStructuresIfBlueprinted = function(data, entity)
 	if id == nil or id == 0 or cir.get_signal(5).signal == nil then return end
 	local surface = Surface.get()
 	local chunkMiddle = Surface.chunkMiddle(data.chunkPos)
+	surface.set_chunk_generated_status(data.chunkPos, defines.chunk_generated_status.entities)
 	local blueprint = Surface.templateInventory()[id]
 	if not blueprint.valid or not blueprint.valid_for_read then return end
 	local direction = (entity.direction - directionOld + 8) % 8
@@ -383,9 +385,15 @@ private.pasteStructuresIfBlueprinted = function(data, entity)
 	data.chest.operable=true
 	data.chest.destructible = false
 	data.chest.minable = false
+	
+	if next(request) ~= nil then
+
 	data.proxy = entity.surface.create_entity{
 		name="item-request-proxy",position=data.chest.position,target=data.chest,modules=request,force=entity.force
 	}
+
+end
+		
 	private.updateBlueprintOf(entity, data)
 end
 
