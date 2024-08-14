@@ -1,7 +1,7 @@
 local math2d = require("math2d")
 require "libs.lua.string"
 
--- Registering entity into system
+-- Registering entity into system 
 local circuitPole = {}
 entities["circuit-pole"] = circuitPole
 
