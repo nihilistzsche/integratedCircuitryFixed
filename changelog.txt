@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.8
+Date: 2025-03-08
+  Changes:
+    - Fix for control errors, this may cause other issues but hoping it's just unnecessary code
+      at this point.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.7
 Date: 2025-03-08
   Changes:

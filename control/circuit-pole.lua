@@ -6,7 +6,8 @@ local circuitPole = {}
 entities["circuit-pole"] = circuitPole
 
 function circuitPole_build_electric_pole(entity)
-	if not entity.valid or entity.type ~= "electric-pole" then
+	log(serpent.block(entity))
+if not entity.valid or entity.type ~= "electric-pole" or entity.type == "ghost" then
 		return
 	end
 	-- diconnect all circuit poles and measure distance to poles

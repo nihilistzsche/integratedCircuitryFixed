@@ -6,7 +6,7 @@ require("constants")
 
 require("control.status-panel")
 --require "control.filter-combinator"
-require("control.circuit-pole")
+--require("control.circuit-pole")
 require("control.compact-combinator")
 require("control.compact-combinator-allowedBuildings")
 require("control.compact-combinator-ghost")
@@ -65,7 +65,7 @@ function on_built(event)
     local entity = event.created_entity or event.entity or event.destination
     compactCombinator_checkSurfaceBuildings(entity, player)
     -- disconnect power cables to io-ports only meant for circuit cables
-    if entity.valid and entity.type == "electric-pole" then circuitPole_build_electric_pole(entity) end
+    -- if entity.valid and entity.type == "electric-pole" then circuitPole_build_electric_pole(entity) end
 end
 script.on_event(defines.events.on_built_entity, on_built)
 script.on_event(defines.events.on_robot_built_entity, on_built)
