@@ -9,6 +9,6 @@ for i, force in pairs(game.forces) do
 	force.reset_recipes()
 	
 	-- technology unlocking migration:
-	check(force, "optics", "lamp-panel")
-	check(force, "optics", "status-panel")
+	check(force, "lamp", "lamp-panel")
+	check(force, "lamp", "status-panel")
 end

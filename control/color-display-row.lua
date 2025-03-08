@@ -7,12 +7,12 @@ local display = {}
 entities["color-display-row"] = display
 local letters = {"A","B","C","D","E"}
 
-local cin = defines.circuit_connector_id.combinator_input	
-local cout = defines.circuit_connector_id.combinator_output
+local cin = defines.wire_connector_id.combinator_input_red	
+local cout = defines.wire_connector_id.combinator_output_red
 
 
 display.build = function(entity)
-	local spawned = {constant}
+	local spawned = {}
 	
 	local constant = private.setupInvisibleConstant(entity)
 	table.insert(spawned, constant)

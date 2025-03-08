@@ -4,13 +4,13 @@ require "constants"
 
 
 function info(message)
-	if settings.global.log_level.value <= 1 then logging.debug(message,"INFO") end
+	if settings.storage.log_level.value <= 1 then logging.debug(message,"INFO") end
 end
 function warn(message)
-	if settings.global.log_level.value <= 2 then logging.debug(message,"WARN") end
+	if settings.storage.log_level.value <= 2 then logging.debug(message,"WARN") end
 end
 function err(message)
-	if settings.global.log_level.value <= 3 then logging.debug(message,"ERROR") end
+	if settings.storage.log_level.value <= 3 then logging.debug(message,"ERROR") end
 end
 
 
@@ -25,7 +25,7 @@ end
 
 
 function logging.debug(message,level)
-	if not settings.global.log_master.value then return end
+	if not settings.storage.log_master.value then return end
 	if not level then level = "ERROR" end
 	if type(message) ~= "string" then
 		message = serpent.block(message)
@@ -37,11 +37,11 @@ function logging.debug(message,level)
 		caller = logging.caller(),
 		message = message
 	}
-	if game and (level == "ERROR" or settings.global.log_player_logging.value) then
+	if game and (level == "ERROR" or settings.storage.log_player_logging.value) then
 		game.print(formatWith("[%level %name]: %message (in %caller)",data))
 	end
 	local str = formatWith("%time [%level %name - %caller]: %message",data)
-	if settings.global.log_stack_trace.value then
+	if settings.storage.log_stack_trace.value then
 		str = str .. "\n" .. logging.traceback()
 	end
 	print(str)

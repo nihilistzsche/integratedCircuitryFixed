@@ -20,14 +20,16 @@ data:extend({
 		name = "color-display-row",
 		enabled = false,
 		ingredients = {
-			{"small-lamp", 5},
-			{"steel-plate", 2},
-			{"electronic-circuit",10}
+			{ name = "small-lamp", amount = 5, type = "item" },
+			{ name = "steel-plate", amount = 2, type = "item" },
+			{ name = "electronic-circuit", amount = 10, type = "item" }
 		},
-		result = "color-display-row"
+		results = {
+			{ name = "color-display-row", amount = 1, type = "item" },
+		}
 	}
 })
-addTechnologyUnlocksRecipe("optics","color-display-row")
+addTechnologyUnlocksRecipe("lamp","color-display-row")
 
 
 -- color display
@@ -38,10 +40,9 @@ overwriteContent(entity, {
 	name = "color-display-row",
 	icon = "__integratedCircuitryFixed__/graphics/icons/color-display-row.png",
 	icon_size = 64,
-	collision_box = REMOVE_KEY,
 	selection_box = {{-0.5, -0.5}, {0.5, 4.5}},
 	collision_box = {{-0.4,-0.4},{0.4,4.4}},
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	order="a",
 	circuit_wire_max_distance = 7,
 	energy_source = {

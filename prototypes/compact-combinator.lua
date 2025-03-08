@@ -19,10 +19,12 @@ data:extend({
 		name = "compact-combinator",
 		enabled = true,
 		ingredients = {
-			{"steel-plate", 5},
-			{"advanced-circuit", 5}
+			{ name = "steel-plate", amount = 5, type = "item" },
+			{ name = "advanced-circuit", amount = 5, type = "item" }
 		},
-		result = "compact-combinator"
+		results = {
+			{ name = "compact-combinator", amount = 1, type = "item" },
+		}
 	}
 })
 
@@ -212,11 +214,12 @@ overwriteContent(entity, {
 	name = "compact-combinator-connection",
 	collision_box = removeKey, -- {{0, 0}, {0, 0}},
 	selection_box = removeKey, --{{-0.25, -0.25}, {0.25, 0.25}},
-	collision_mask = {},
+	collision_mask = { layers = {} },
 	order="a",
 	circuit_wire_max_distance = 64,
 	draw_circuit_wires = false,
 	draw_copper_wires = false,
+	hidden = true,
 	flags = {
 		"placeable-player",
 		"placeable-off-grid",
@@ -225,7 +228,6 @@ overwriteContent(entity, {
 		"hide-alt-info",
 		"not-deconstructable",
 		"not-upgradable",
-		"hidden",
 		"not-rotatable"
 	},
 	picture = {

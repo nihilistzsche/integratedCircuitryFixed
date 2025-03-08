@@ -15,7 +15,7 @@ overwriteContent(entity, {
 	order = "zzzz",
 	selection_box = REMOVE_KEY,
 	collision_box = REMOVE_KEY,
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	draw_circuit_wires = false,
 	energy_source = {
 		type = "void",
@@ -52,7 +52,7 @@ overwriteContent(entity, {
 	order = "zzzz",
 	selection_box = REMOVE_KEY,
 	collision_box = REMOVE_KEY,
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	draw_circuit_wires = false,
 	energy_source = {
 		type = "void",
@@ -94,7 +94,7 @@ overwriteContent(entity, {
 	order = "zzzz",
 	selection_box = REMOVE_KEY,
 	collision_box = REMOVE_KEY,
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	draw_circuit_wires = false,
 	flags = {
 		"placeable-neutral", 

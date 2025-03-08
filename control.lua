@@ -13,7 +13,7 @@ require("control.compact-combinator-ghost")
 require("control.monochrom-display-row")
 require("control.color-display-row")
 
--- global data used:
+-- storage data used:
 -- integratedCircuitry.version = $version
 -- integratedCircuitry.surface:
 --    See compact-combinator-surface.lua
@@ -24,8 +24,8 @@ require("control.color-display-row")
 -- Init
 ---------------------------------------------------
 script.on_init(function()
-    if not global.integratedCircuitry then global.integratedCircuitry = {} end
-    local data = global.integratedCircuitry
+    if not storage.integratedCircuitry then storage.integratedCircuitry = {} end
+    local data = storage.integratedCircuitry
     if not data.version then data.version = modVersion end
 
     entities_init()
@@ -37,7 +37,7 @@ script.on_load(function() entities_load() end)
 script.on_configuration_changed(function()
     gui_init()
     entities_init()
-    local ic = global.integratedCircuitry
+    local ic = storage.integratedCircuitry
     local previousVersion = ic.version
     if ic.version < "0.0.1" then err("Migration from version " .. ic.version .. " not supported!") end
     if ic.version ~= previousVersion then

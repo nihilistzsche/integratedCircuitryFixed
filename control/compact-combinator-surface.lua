@@ -3,7 +3,7 @@ require "libs.control.luaentity"
 -- @module Surface for compact-combinator
 -- @usage local Surface = require('compact-combinator-surface')
 
--- global data used:
+-- storage data used:
 -- integratedCircuitry.surface = {
 --		chunks = {
 --			[x][y] = bool            -- true if chunk is used
@@ -133,7 +133,7 @@ end
 
 
 function private.init()
-	local d = global.integratedCircuitry
+	local d = storage.integratedCircuitry
 	if d.surface then return end
 	d.surface = {
 		chunks = {},
@@ -161,7 +161,7 @@ end
 
 function private.data()
 	private.init()
-	return global.integratedCircuitry.surface
+	return storage.integratedCircuitry.surface
 end
 
 

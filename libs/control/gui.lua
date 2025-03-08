@@ -26,11 +26,11 @@ gui = {}
 -- gui_scheduleEvent($uiComponentIdentifier,$player)
 
 --------------------------------------------------
--- Global data
+-- storage data
 --------------------------------------------------
 
--- This helper file uses the following global data variables:
--- global.gui.playerData = { entity = $entity }
+-- This helper file uses the following storage data variables:
+-- storage.gui.playerData = { entity = $entity }
 --     "      events[$tick] = { {$uiComponentIdentifier, $player}, ... }
 --     "      version = $number
 --     "      inEvent = $bool                 Used to detect when it should set active entity for player
@@ -41,24 +41,24 @@ gui = {}
 
 
 function gui_init()
-	if global.gui == nil then
-		global.gui = {
+	if storage.gui == nil then
+		storage.gui = {
 			events = {},
 			playerData = {},
 			version = 3
 		}
 	end
-	local prevGui = global.gui.version
-	if not global.gui.version then
-		global.gui.version = 1
-		global.itemSelection = nil
+	local prevGui = storage.gui.version
+	if not storage.gui.version then
+		storage.gui.version = 1
+		storage.itemSelection = nil
 	end
-	if global.gui.version < 3 then
-		global.gui.version = 3
-		global.gui.playerData = {}
+	if storage.gui.version < 3 then
+		storage.gui.version = 3
+		storage.gui.playerData = {}
 	end
-	if global.gui.version ~= prevGui then
-		info("Migrated gui version to "..tostring(global.gui.version))
+	if storage.gui.version ~= prevGui then
+		info("Migrated gui version to "..tostring(storage.gui.version))
 	end
 end
 
@@ -93,16 +93,16 @@ local function handleEvent(uiComponentIdentifier,player)
 end
 
 function gui_scheduleEvent(uiComponentIdentifier,player)
-	global.gui.events = global.gui.events or {}
-	table.insert(global.gui.events,{uiComponentIdentifier=uiComponentIdentifier,player=player})
+	storage.gui.events = storage.gui.events or {}
+	table.insert(storage.gui.events,{uiComponentIdentifier=uiComponentIdentifier,player=player})
 end
 
 
 function gui_tick()
 	if game.tick % guiUpdateEveryTicks ~= 0 then return end
-	if global.gui.events ~= nil then
-		local events = global.gui.events
-		global.gui.events = nil
+	if storage.gui.events ~= nil then
+		local events = storage.gui.events
+		storage.gui.events = nil
 		if #events > 0 then
 			for _,event in pairs(events) do
 				handleEvent(event.uiComponentIdentifier, event.player)
@@ -115,16 +115,16 @@ function gui_open(event)
 	local entity = event.entity
 	local player = game.players[event.player_index]
 	local pdata = private.playerData(player.name)
-	local root = not global.gui.inEvent
+	local root = not storage.gui.inEvent
 	if root then 
 		pdata.entity = entity
-		global.gui.inEvent = true
+		storage.gui.inEvent = true
 	end
 	if entity and gui[entity.name] and gui[entity.name].open then
 		gui[entity.name].open(player, entity, event.gui_type)
 	end
 	if root then
-		global.gui.inEvent = false
+		storage.gui.inEvent = false
 	end
 end
 
@@ -133,10 +133,10 @@ function gui_close(event)
 	local entity = event.entity
 	local player = game.players[event.player_index]
 	local pdata = private.playerData(player.name)
-	local root = not global.gui.inEvent
+	local root = not storage.gui.inEvent
 	if root then 
 		pdata.entity = nil
-		global.gui.inEvent = true
+		storage.gui.inEvent = true
 	end
 	if entity and gui[entity.name] and gui[entity.name].close then
 		gui[entity.name].close(player, event.gui_type)
@@ -146,16 +146,16 @@ function gui_close(event)
 		gui[element.name].close(player, event.gui_type)
 	end
 	if root then
-		global.gui.inEvent = false
+		storage.gui.inEvent = false
 	end
 end
 
 
 private.playerData = function(playerName)
-	if not global.gui.playerData[playerName] then
-		global.gui.playerData[playerName] = {}
+	if not storage.gui.playerData[playerName] then
+		storage.gui.playerData[playerName] = {}
 	end
-	return global.gui.playerData[playerName]
+	return storage.gui.playerData[playerName]
 end
 
 --------------------------------------------------

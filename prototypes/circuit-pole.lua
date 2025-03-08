@@ -19,11 +19,12 @@ data:extend({
     type = "recipe",
     name = "circuit-pole",
     ingredients = {
-      {"iron-plate", 1},
-      {"copper-cable", 1}
+      { name = "iron-plate", amount = 1, type = "item"},
+      { name = "copper-cable", amount = 1, type = "item"}
     },
-    result = "circuit-pole",
-    result_count = 2,
+    results = {
+		{ name = "circuit-pole", amount = 2, type = "item" },
+	},
     requester_paste_multiplier = 25
   }
 })
@@ -44,7 +45,7 @@ overwriteContent(circuitPole, {
 	},
 	maximum_wire_distance = 15,
 	supply_area_distance = 0,
-	draw_copper_wires = false,
+	draw_copper_wires = true,
 	pictures = {
 		filename = "__integratedCircuitryFixed__/graphics/entity/circuit-pole.png",
 		priority = "extra-high",

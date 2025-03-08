@@ -18,13 +18,15 @@ data:extend({
 		name = "lamp-panel",
 		enabled = false,
 		ingredients = {
-			{"small-lamp", 1},
-			{"steel-plate", 1},
+			{ name = "small-lamp", amount = 1, type = "item"},
+			{ name = "steel-plate", amount = 1, type = "item"},
 		},
-		result = "lamp-panel"
+		results = { 
+			{ name = "lamp-panel", amount = 1, type = "item" }
+		}
 	}
 })
-addTechnologyUnlocksRecipe("optics","lamp-panel")
+addTechnologyUnlocksRecipe("lamp","lamp-panel")
 
 -- Entity
 local indicator = table.deepcopy(data.raw["lamp"]["small-lamp"])
@@ -32,9 +34,9 @@ local REMOVE = "__REMOVE__"
 overwriteContent(indicator, {
 	name = "lamp-panel",
 	fast_replaceable_group = "lamp",
-	energy_usage_per_tick = "15KW",
+	energy_usage_per_tick = "15kW",
 	collision_box = {{-0.4,-0.4},{0.4,0.4}},
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	light = {intensity = 0.2, size = 0.5, color = {r=0.5, g=0.5, b=0.5}},
 	light_when_colored = {intensity = 0.2, size = 0.5, color = {r=0.5, g=0.5, b=0.5}},
 	glow_size = 1,

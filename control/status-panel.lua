@@ -116,10 +116,10 @@ gui["status-panel"].click = function(nameArr,player,entity)
 		else
 			m.setSignal(player,entity,nil)
 		end
-		local data = global.entityData[idOfEntity(entity)]
+		local data = storage.entityData[idOfEntity(entity)]
 		m.writeDataToConfig(data, entity)
 	elseif table.set({"min","max"})[fieldName] then
-		local data = global.entityData[idOfEntity(entity)]
+		local data = storage.entityData[idOfEntity(entity)]
 		local tab = player.gui.screen["status-panel"].table
 		local text = tab["integratedCircuitry."..fieldName].text
 		if text~="" and text~="-" then 
@@ -163,7 +163,7 @@ m.writeDataToConfig = function(data, entity)
 end
 
 m.setSignal = function(player,entity,arr)
-	local data = global.entityData[idOfEntity(entity)]
+	local data = storage.entityData[idOfEntity(entity)]
 	if not arr then
 		data.signal = nil
 		m.updateGui(player,entity)
@@ -190,7 +190,7 @@ m.setSignal = function(player,entity,arr)
 end
 
 m.updateGui = function(player,entity)
-	local data = global.entityData[idOfEntity(entity)]
+	local data = storage.entityData[idOfEntity(entity)]
 	
 	local tab = player.gui.screen["status-panel"].table
 	tab["integratedCircuitry.min"].text = tostring(data.min) or ""

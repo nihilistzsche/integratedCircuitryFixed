@@ -10,8 +10,8 @@ for i, force in pairs(game.forces) do
 	
 	-- technology unlocking migration:
 	check(force, "circuit-network","compact-combinator")
-	check(force, "optics", "lamp-panel")
-	check(force, "optics", "status-panel")
-	check(force, "optics", "monochrom-display-row")
-	check(force, "optics", "color-display-row")
+	check(force, "lamp", "lamp-panel")
+	check(force, "lamp", "status-panel")
+	check(force, "lamp", "monochrom-display-row")
+	check(force, "lamp", "color-display-row")
 end

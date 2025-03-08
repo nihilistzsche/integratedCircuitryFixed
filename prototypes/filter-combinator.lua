@@ -20,10 +20,12 @@ data:extend({
 		hidden = true,
     ingredients =
     {
-      {"copper-cable", 5},
-      {"electronic-circuit", 5},
+      { name = "copper-cable", amount = 5, type = "item" },
+      { name = "electronic-circuit", amount = 5, type = "item" },
     },
-    result = "filter-combinator"
+    results = {
+      { name = "filter-combinator", amount = 1, type = "item" },
+    }
   },
 })
 

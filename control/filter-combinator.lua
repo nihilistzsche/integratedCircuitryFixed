@@ -16,7 +16,7 @@ local m = {} --used for methods of the filterCombinator
 -- }
 
 --------------------------------------------------
--- Global data
+-- storage data
 --------------------------------------------------
 
 

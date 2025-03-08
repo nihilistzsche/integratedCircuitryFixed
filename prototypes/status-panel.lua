@@ -18,10 +18,12 @@ data:extend({
 		name = "status-panel",
 		enabled = false,
 		ingredients = {
-			{"lamp-panel", 3},
-			{"electronic-circuit", 3},
+			{ name = "lamp-panel", amount = 3, type = "item" },
+			{ name = "electronic-circuit", amount = 3, type = "item" },
 		},
-		result = "status-panel"
+		results = {
+			{ name = "status-panel", amount = 1, type = "item" },
+		}
 	}
 })
 
@@ -30,7 +32,7 @@ data:extend({
 local statusPanel = table.deepcopy(data.raw["constant-combinator"]["constant-combinator"])
 overwriteContent(statusPanel, {
 	name = "status-panel",
-	energy_usage_per_tick = "45KW",
+	energy_usage_per_tick = "45kW",
 	collision_box = {{-0.45, -1.45}, {0.45, 1.45}},
   selection_box = {{-0.5, -1.5}, {0.5, 1.5}},
 	icon = "__integratedCircuitryFixed__/graphics/icons/status-panel.png",
@@ -68,7 +70,7 @@ overwriteContent(statusPanel, {
 })
 data:extend({	statusPanel })
 
-addTechnologyUnlocksRecipe("optics","status-panel")
+addTechnologyUnlocksRecipe("lamp","status-panel")
 
 -- Sprite to show status panel:
 local statusPanelSprite = {

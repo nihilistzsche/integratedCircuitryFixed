@@ -7,13 +7,14 @@ overwriteContent(entity, {
 	name = "compact-combinator-substation",
 	collision_box = REMOVE,
 	selection_box = REMOVE, --{{-0.25, -0.25}, {0.25, 0.25}},
-	collision_mask = {},
+	collision_mask = { layers = {} },
 	order="a",
 	track_coverage_during_build_by_moving = false,
 	supply_area_distance = 16,
 	maximum_wire_distance = 64,
 	draw_circuit_wires = false,
 	draw_copper_wires = false,
+	hidden = true,
 	flags = {
 		"placeable-player",
 		"placeable-enemy",
@@ -24,7 +25,6 @@ overwriteContent(entity, {
 		"hide-alt-info",
 		"not-deconstructable",
 		"not-upgradable",
-		"hidden",
 		"not-rotatable"
 	},
 	pictures = {

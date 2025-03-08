@@ -18,14 +18,16 @@ data:extend({
 		name = "monochrom-display-row",
 		enabled = false,
 		ingredients = {
-			{"small-lamp", 5},
-			{"steel-plate", 2},
-			{"electronic-circuit",5}
+			{ name = "small-lamp", amount = 5, type = "item" },
+			{ name = "steel-plate", amount = 2, type = "item" },
+			{ name = "electronic-circuit", amount = 5, type = "item" }
 		},
-		result = "monochrom-display-row"
+		results = {
+			{ name = "monochrom-display-row", amount = 1, type = "item" } 
+		}
 	}
 })
-addTechnologyUnlocksRecipe("optics","monochrom-display-row")
+addTechnologyUnlocksRecipe("lamp","monochrom-display-row")
 
 
 -- Monochrom display
@@ -36,10 +38,9 @@ overwriteContent(entity, {
 	name = "monochrom-display-row",
 	icon = "__integratedCircuitryFixed__/graphics/icons/display-row.png",
 	icon_size = 64,
-	collision_box = REMOVE_KEY,
 	selection_box = {{-0.5, -0.5}, {0.5, 4.5}},
 	collision_box = {{-0.4,-0.4},{0.4,4.4}},
-	collision_mask = {"water-tile", "item-layer", "object-layer"},
+	collision_mask = { layers = { water_tile = true, item = true, is_object = true } },
 	order="a",
 	circuit_wire_max_distance = 7,
 	energy_source = {

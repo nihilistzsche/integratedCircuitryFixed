@@ -18,10 +18,12 @@ data:extend({
 		enabled = false,
 		hidden = true,
 		ingredients = {
-			{"constant-combinator", 4},
-			{"electronic-circuit", 20},
+			{ name = "constant-combinator", amount = 4, type = "item" },
+			{ name = "electronic-circuit", amount = 20, type = "item" },
 		},
-		result = "memory-combinator"
+		results = {
+			{ name = "memory-combinator", amount = 1, type = "item" },
+		}
 	}
 })
 
@@ -35,7 +37,7 @@ overwriteContent(memory, {
 	max_health = 500,
 	collision_box = {{-0.85, -0.85}, {0.85, 0.85}},
 	selection_box = {{-1, -1}, {1, 1}},
-	energy_usage_per_tick = "100KW",
+	energy_usage_per_tick = "100kW",
 	picture_off = {
 		filename = "__integratedCircuitryFixed__/graphics/entity/memory-combinator.png",
 		x = 0,
@@ -65,4 +67,4 @@ memory.minable.result = "memory-combinator"
 data:extend({	memory })
 
 
-addTechnologyUnlocksRecipe("optics","memory-combinator")
+addTechnologyUnlocksRecipe("lamp","memory-combinator")

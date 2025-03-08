@@ -1,9 +1,9 @@
 {
 	"name": "integratedCircuitryFixed",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"title": "Integrated Circuitry (Fixed)",
 	"author": "judos, nihilistzsche",
 	"description": "Nicer lamps for status indication, Status bars to show level of items, fixed circuit wire overlapping, and more coming...",
-	"dependencies": ["base >= 1.1.0"],
-	"factorio_version": "1.1"
+	"dependencies": ["base >= 2.0.32"],
+	"factorio_version": "2.0"
 }
