@@ -1,4 +1,4 @@
---if settings.storage.log_master == nil then
+--if settings.global.log_master == nil then
 
 	data:extend(
 	{
